@@ -1,0 +1,42 @@
+- hosts: all
+  connection: local
+  tasks:
+    - name: ensure docker yum repository exists
+      yum_repository:
+        name: dockerrepo
+        description: Docker Repository
+        baseurl: https://yum.dockerproject.org/repo/main/centos/7/
+        gpgcheck: yes
+        gpgkey: https://yum.dockerproject.org/gpg
+      become: true
+    - name: ensure docker-engine is at the latest version
+      yum:
+        name: docker-engine
+        state: latest
+      become: true
+    - name: ensure docker-engine is running (and enable it at boot)
+      service: |
+        name=docker
+        state=started
+        enabled=yes
+      become: true
+    - name: ensure pip is at the latest version
+      yum:
+        name: python-pip
+        state: latest
+      become: true
+    - name: ensure pip is at the latest version
+      pip:
+        name: pip
+        state: latest
+      become: true
+    - name: ensure docker-py is at the latest version
+      pip:
+        name: docker-py
+        state: latest
+      become: true
+    - name: ensure docker-compose is at the latest version
+      pip:
+        name: docker-compose
+        state: latest
+      become: true
