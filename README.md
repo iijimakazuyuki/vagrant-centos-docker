@@ -5,6 +5,7 @@ Vagrantfile for CentOS docker host
 
 Usage
 ----------------------------------
+
 ```
 vagrant up
 vagrant ssh
