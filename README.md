@@ -8,5 +8,5 @@ Usage
 ```
 vagrant up
 vagrant ssh
-docker run --rm hello-world
+sudo docker run --rm hello-world
 ```
