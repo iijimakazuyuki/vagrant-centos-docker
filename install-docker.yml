@@ -15,10 +15,10 @@
         state: latest
       become: true
     - name: ensure docker-engine is running (and enable it at boot)
-      service: |
-        name=docker
-        state=started
-        enabled=yes
+      service:
+        name: docker
+        state: started
+        enabled: yes
       become: true
     - name: ensure pip is at the latest version
       yum:
